@@ -4,6 +4,7 @@ from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, ContextTypes
 
 BOT_TOKEN = os.getenv("8114725670:AAHB9yyplVuRkuNVJoHBNepf0dMjZ-6qR_4")
+print(f"TOKEN EXISTS: {BOT_TOKEN is not None}")
 CLAUDE_KEY = os.getenv("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")
 
 AGENT_PERSONALITY = """
@@ -58,3 +59,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
