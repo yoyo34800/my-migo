@@ -22,25 +22,21 @@ client = anthropic.Anthropic(api_key=CLAUDE_KEY)
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_msg = update.message.text or ""
     user_name = update.effective_user.first_name or "صديقي"
-    
     await context.bot.send_chat_action(
         chat_id=update.effective_chat.id,
         action="typing"
     )
-    
     response = client.messages.create(
         model="claude-sonnet-4-20250514",
         max_tokens=1000,
         system=AGENT_PERSONALITY,
         messages=[{"role": "user", "content": f"{user_name} يقول: {user_msg}"}]
     )
-    
     reply = response.content[0].text
     await update.message.reply_text(reply)
 
 async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     caption = update.message.caption or "صورة بدون وصف"
-    
     response = client.messages.create(
         model="claude-sonnet-4-20250514",
         max_tokens=1000,
@@ -50,7 +46,6 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "content": f"أرسلت لك صورة تصميم مع الوصف: {caption}. اكتب كابشن احترافي وهاشتاقات للنشر على إنستغرام."
         }]
     )
-    
     reply = response.content[0].text
     await update.message.reply_text(f"✅ جاهز للنشر:\n\n{reply}")
 
