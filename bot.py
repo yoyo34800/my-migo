@@ -3,11 +3,9 @@ import anthropic
 from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, ContextTypes
 
-# 🔑 ضع مفاتيحك هنا
-BOT_TOKEN = "8114725670:AAHB9yyplVuRkuNVJoHBNepf0dMjZ-6qR_4"
-CLAUDE_KEY = "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"
+BOT_TOKEN = os.getenv("8114725670:AAHB9yyplVuRkuNVJoHBNepf0dMjZ-6qR_4")
+CLAUDE_KEY = os.getenv("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")
 
-# 🧠 شخصية الوكيل
 AGENT_PERSONALITY = """
 أنت وكيل ذكاء اصطناعي متخصص في التسويق الرقمي والتصميم.
 صاحبك مصمم شعارات على ملابس يبيع في تونس وأوروبا.
@@ -15,7 +13,7 @@ AGENT_PERSONALITY = """
 - تكتب كابشن وهاشتاقات احترافية للمنشورات
 - ترد على العملاء بلغتهم (عربي، فرنسي، إنجليزي...)
 - تبيع بأسلوب مقنع وودي
-- تحافظ على قيم: لا عنصرية، لا إساءة للأديان
+- لا عنصرية، لا إساءة للأديان
 - تكون مرح وإنساني في تعاملك
 """
 
